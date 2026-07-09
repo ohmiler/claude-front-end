@@ -1,0 +1,6 @@
+{
+  "projectId": "dd19a286-4f37-4ec1-b872-251b84c238e2",
+  "name": "claude-front-end",
+  "type": "frontend",
+  "targetUrl": "https://claude-front-end.vercel.app/"
+}
