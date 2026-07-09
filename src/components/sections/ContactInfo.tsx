@@ -23,7 +23,7 @@ const infoItems = [
 export function ContactInfo() {
   return (
     <Card hoverable={false} className="flex flex-col gap-6" data-testid="contact-info">
-      <h3 className="text-lg font-semibold text-text-primary">Contact details</h3>
+      <h2 className="text-lg font-semibold text-text-primary">Contact details</h2>
       <ul className="flex flex-col gap-5">
         {infoItems.map((item) => (
           <li key={item.label} className="flex items-start gap-3">

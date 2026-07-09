@@ -1,8 +1,11 @@
-import { Outlet } from 'react-router'
+import { useState } from 'react'
+import { Outlet, ScrollRestoration } from 'react-router'
 import { Header } from '../components/layout/Header'
 import { Footer } from '../components/layout/Footer'
 
 export function RootLayout() {
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
+
   return (
     <div className="flex min-h-screen flex-col bg-bg">
       <a
@@ -11,11 +14,18 @@ export function RootLayout() {
       >
         Skip to content
       </a>
-      <Header />
-      <main id="main-content" className="flex-1">
-        <Outlet />
-      </main>
-      <Footer />
+      <div className="flex min-h-screen flex-1 flex-col" inert={isMobileNavOpen}>
+        <Header
+          isMobileNavOpen={isMobileNavOpen}
+          onOpenMobileNav={() => setIsMobileNavOpen(true)}
+          onCloseMobileNav={() => setIsMobileNavOpen(false)}
+        />
+        <main id="main-content" className="flex-1">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+      <ScrollRestoration />
     </div>
   )
 }

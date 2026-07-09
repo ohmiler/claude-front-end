@@ -61,7 +61,7 @@ export function Button(props: ButtonProps) {
   const { children: _children2, className: _cn2, variant: _v2, size: _s2, to: _to, ...rest } =
     props as NativeButtonProps
   return (
-    <button className={classes} {...rest}>
+    <button type="button" className={classes} {...rest}>
       {children}
     </button>
   )

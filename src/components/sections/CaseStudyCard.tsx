@@ -4,14 +4,17 @@ import { Badge } from '../ui/Badge'
 
 interface CaseStudyCardProps {
   caseStudy: CaseStudy
+  headingLevel?: 'h2' | 'h3'
 }
 
-export function CaseStudyCard({ caseStudy }: CaseStudyCardProps) {
+export function CaseStudyCard({ caseStudy, headingLevel = 'h3' }: CaseStudyCardProps) {
+  const Heading = headingLevel
+
   return (
     <Card className="flex h-full flex-col gap-5" data-testid={`case-study-card-${caseStudy.slug}`}>
       <div className="flex flex-col gap-2">
         <span className="text-sm font-medium text-accent-cyan">{caseStudy.industry}</span>
-        <h3 className="text-xl font-semibold text-text-primary">{caseStudy.title}</h3>
+        <Heading className="text-xl font-semibold text-text-primary">{caseStudy.title}</Heading>
         <p className="text-sm text-text-secondary">{caseStudy.summary}</p>
       </div>
 

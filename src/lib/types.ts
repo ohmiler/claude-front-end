@@ -1,3 +1,5 @@
+import type { IconName } from './icons'
+
 export interface NavLink {
   label: string
   to: string
@@ -8,7 +10,7 @@ export interface Service {
   title: string
   summary: string
   description: string
-  icon: string
+  icon: IconName
   capabilities: string[]
 }
 
@@ -32,7 +34,7 @@ export interface ProcessStep {
   step: number
   title: string
   description: string
-  icon: string
+  icon: IconName
 }
 
 export interface Faq {

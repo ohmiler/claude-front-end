@@ -16,7 +16,7 @@ export function CaseStudiesPage() {
             subtitle="A look at how we've helped teams across logistics, healthcare, fintech, and retail ship real AI products."
             id="case-studies-page-heading"
           />
-          <CaseStudyGrid caseStudies={caseStudies} />
+          <CaseStudyGrid caseStudies={caseStudies} headingLevel="h2" />
         </Container>
       </section>
 

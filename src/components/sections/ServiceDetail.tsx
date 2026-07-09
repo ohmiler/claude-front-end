@@ -20,7 +20,7 @@ export function ServiceDetail({ service }: ServiceDetailProps) {
         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-bg-elevated text-accent-cyan">
           {Icon && <Icon size={24} aria-hidden="true" />}
         </div>
-        <h3 className="text-2xl font-semibold text-text-primary">{service.title}</h3>
+        <h2 className="text-2xl font-semibold text-text-primary">{service.title}</h2>
         <p className="text-text-secondary">{service.description}</p>
       </div>
 

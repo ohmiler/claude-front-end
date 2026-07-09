@@ -11,8 +11,12 @@ interface MobileNavProps {
   onClose: () => void
 }
 
+const FOCUSABLE_SELECTOR =
+  'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+
 export function MobileNav({ isOpen, onClose }: MobileNavProps) {
   const closeButtonRef = useRef<HTMLButtonElement>(null)
+  const panelRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     if (!isOpen) return
@@ -20,7 +24,26 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
     closeButtonRef.current?.focus()
 
     function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === 'Escape') onClose()
+      if (event.key === 'Escape') {
+        onClose()
+        return
+      }
+
+      if (event.key !== 'Tab' || !panelRef.current) return
+
+      const focusable = panelRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)
+      if (focusable.length === 0) return
+
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first.focus()
+      }
     }
     document.addEventListener('keydown', handleKeyDown)
 
@@ -48,6 +71,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
         onClick={onClose}
       />
       <nav
+        ref={panelRef}
         aria-label="Mobile"
         role="dialog"
         aria-modal="true"

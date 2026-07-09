@@ -12,7 +12,7 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 
-export const iconMap: Record<string, LucideIcon> = {
+export const iconMap = {
   Compass,
   Code2,
   Bot,
@@ -23,4 +23,6 @@ export const iconMap: Record<string, LucideIcon> = {
   PenTool,
   Hammer,
   Rocket,
-}
+} satisfies Record<string, LucideIcon>
+
+export type IconName = keyof typeof iconMap

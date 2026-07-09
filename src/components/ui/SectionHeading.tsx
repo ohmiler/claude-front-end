@@ -39,12 +39,7 @@ export function SectionHeading({
         {title}
       </HeadingTag>
       {subtitle && (
-        <p
-          className={clsx(
-            'text-lg text-text-secondary',
-            align === 'center' ? 'max-w-2xl' : 'max-w-2xl',
-          )}
-        >
+        <p className="max-w-2xl text-lg text-text-secondary">
           {subtitle}
         </p>
       )}

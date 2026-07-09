@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { NavLink } from 'react-router'
 import { Menu } from 'lucide-react'
 import clsx from 'clsx'
@@ -7,9 +6,13 @@ import { Container } from '../ui/Container'
 import { Button } from '../ui/Button'
 import { MobileNav } from './MobileNav'
 
-export function Header() {
-  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
+interface HeaderProps {
+  isMobileNavOpen: boolean
+  onOpenMobileNav: () => void
+  onCloseMobileNav: () => void
+}
 
+export function Header({ isMobileNavOpen, onOpenMobileNav, onCloseMobileNav }: HeaderProps) {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-bg/80 backdrop-blur">
       <Container className="flex h-18 items-center justify-between py-4">
@@ -55,7 +58,7 @@ export function Header() {
         <button
           type="button"
           className="inline-flex items-center justify-center rounded-full p-2 text-text-primary md:hidden"
-          onClick={() => setIsMobileNavOpen(true)}
+          onClick={onOpenMobileNav}
           aria-label="Open menu"
           aria-expanded={isMobileNavOpen}
           aria-controls="mobile-nav"
@@ -65,7 +68,7 @@ export function Header() {
         </button>
       </Container>
 
-      <MobileNav isOpen={isMobileNavOpen} onClose={() => setIsMobileNavOpen(false)} />
+      <MobileNav isOpen={isMobileNavOpen} onClose={onCloseMobileNav} />
     </header>
   )
 }

@@ -47,7 +47,7 @@ export function ContactForm() {
   if (isSubmitted) {
     return (
       <Card hoverable={false} className="flex flex-col gap-3" data-testid="contact-success">
-        <h3 className="text-lg font-semibold text-text-primary">Thanks — message ready to send</h3>
+        <h2 className="text-lg font-semibold text-text-primary">Thanks — message ready to send</h2>
         <p className="text-sm text-text-secondary">
           Your email client should have opened with your message pre-filled. If it
           didn't, email us directly at{' '}

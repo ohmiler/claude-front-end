@@ -8,11 +8,13 @@ interface ProcessTimelineProps {
 }
 
 export function ProcessTimeline({ steps, variant = 'full' }: ProcessTimelineProps) {
+  const StepHeading = variant === 'full' ? 'h2' : 'h3'
+
   return (
     <ol
       className={clsx(
         'grid grid-cols-1 gap-6',
-        variant === 'full' ? 'sm:grid-cols-2 lg:grid-cols-5' : 'sm:grid-cols-2 lg:grid-cols-5',
+        variant === 'full' ? 'sm:grid-cols-2 lg:grid-cols-5' : 'sm:grid-cols-2 lg:grid-cols-3',
       )}
       data-testid="process-timeline"
     >
@@ -32,7 +34,7 @@ export function ProcessTimeline({ steps, variant = 'full' }: ProcessTimelineProp
                 Step {step.step}
               </span>
             </div>
-            <h3 className="text-lg font-semibold text-text-primary">{step.title}</h3>
+            <StepHeading className="text-lg font-semibold text-text-primary">{step.title}</StepHeading>
             {variant === 'full' && (
               <p className="text-sm text-text-secondary">{step.description}</p>
             )}
